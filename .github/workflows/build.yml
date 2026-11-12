@@ -1,0 +1,33 @@
+name: Build ZAY KEYS (Windows VST3)
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure
+        run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+
+      - name: Build (Release)
+        run: cmake --build build --config Release --parallel
+
+      - name: Package
+        shell: pwsh
+        run: |
+          $vst = Get-ChildItem -Path build -Recurse -Directory -Filter "ZAY KEYS.vst3" | Select-Object -First 1
+          if (-not $vst) { throw "No se genero ZAY KEYS.vst3" }
+          New-Item -ItemType Directory -Force -Path "dist/ZAY_KEYS" | Out-Null
+          Copy-Item $vst.FullName -Destination "dist/ZAY_KEYS/ZAY KEYS.vst3" -Recurse
+          Copy-Item docs/INSTALL_FL_STUDIO.txt "dist/ZAY_KEYS/"
+          Copy-Item README.md "dist/ZAY_KEYS/"
+          Compress-Archive -Path "dist/ZAY_KEYS/*" -DestinationPath "ZAY_KEYS_v1.0.1_Windows_VST3.zip"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ZAY_KEYS_v1.0.1_Windows_VST3
+          path: ZAY_KEYS_v1.0.1_Windows_VST3.zip
