@@ -1,0 +1,12 @@
+ZAY KEYS v1.0.1 - GOLDMINE AUDIO  |  Instalacion en FL Studio (Windows 10/11, 64 bits)
+
+1. Descomprimi el ZIP.
+2. Copia la CARPETA "ZAY KEYS.vst3" a:   C:\Program Files\Common Files\VST3\
+   (necesita permisos de administrador).
+3. En FL Studio: Options > Manage plugins > "Find installed plugins" (o "Verify plugins").
+4. Agrega ZAY KEYS desde el Channel Rack: + > Plugin database > Installed > Generators/VST3.
+5. Abri el selector de SoundFonts con el boton "SF2" (o la tecla LOAD de la pantalla LCD).
+   El SoundFont de fabrica va dentro del plugin; no hace falta copiar archivos.
+6. El estado (SF2, banco, preset y parametros) se guarda con el proyecto y con los presets .fst de FL.
+
+Presets de usuario: Documentos\GOLDMINE AUDIO\ZAY KEYS\Presets  (boton SAVE).

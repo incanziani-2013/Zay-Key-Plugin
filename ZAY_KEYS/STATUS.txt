@@ -1,0 +1,13 @@
+ZAY KEYS - ESTADO (revision del 11/11/2026)
+
+VERIFICADO (prueba aislada con el SoundFont real, ASan/UBSan limpio):
+ - Motor SF2 (SoundFontEngine + tsf.h): carga el SF2, 88 teclas suenan, limite de polifonia,
+   glide/envolvente/pitch bend/sustain sin fallos, 0 asignaciones de memoria en el hilo de audio,
+   rechaza archivos que no son SF2.
+
+NO VERIFICADO (no hay JUCE ni Windows en ese entorno):
+ - Compilacion completa con JUCE 8.0.6 / MSVC (GitHub Actions).
+ - Carga en FL Studio, guardado .fst, aspecto visual vs. la imagen de referencia.
+Si el build falla, pegame el log de GitHub Actions y lo corrijo.
+
+Ver README.md (limitaciones) y docs/INSTALL_FL_STUDIO.txt.
